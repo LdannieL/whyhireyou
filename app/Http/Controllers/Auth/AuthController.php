@@ -22,6 +22,9 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
+	protected $redirectPath = 'user/{id}/dashboard';
+
+
 	/**
 	 * Create a new authentication controller instance.
 	 *
@@ -38,7 +41,7 @@ class AuthController extends Controller {
 	}
 
 	// protected $redirectPath = 'user/{id}/dashboard';
-	protected $redirectPath = '/';
+
 
 	// public function Login($id){
  //        if(Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]))
@@ -51,5 +54,10 @@ class AuthController extends Controller {
 
  //    return $user = Auth::user();
 	// }
+
+    public function postRegister()
+    {
+        return redirect('/');
+    }
 
 }
