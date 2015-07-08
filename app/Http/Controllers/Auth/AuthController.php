@@ -37,7 +37,8 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
-	protected $redirectPath = 'user/{id}/dashboard';
+	// protected $redirectPath = 'user/{id}/dashboard';
+	protected $redirectPath = '/';
 
 	// public function Login($id){
  //        if(Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]))
