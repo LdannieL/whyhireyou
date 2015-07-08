@@ -37,9 +37,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'JobsController@index']);
 
 Route::get('/{id}', ['as' => 'job', 'uses' =>'JobsController@show']);
 
-Route::group(['prefix' => "admin", 'before' => 'middleware'], function(){
+Route::group(['prefix' => "admin", 'middleware' => 'auth'], function(){
 // Route::group(['prefix' => "admin"], function(){
-	Route::resource("jobs","AdminJobController");
-	Route::resource("categories","AdminCategoryController");
+	Route::resource('jobs','AdminJobController');
+	Route::resource('categories','AdminCategoryController');
 });
 

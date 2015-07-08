@@ -19,7 +19,7 @@
 			<div class="col_4 column">
 				<h1><a href="{{ route('home') }}"><strong>WhyHire</strong>You</a></h1>	
 			</div>
-			<div class="col_6 column right welcome">
+			<div class="col_4 column right welcome">
 				@if(Auth::user()['id'])
 					<h6> welcome <strong>{{ Auth::user()['name']}}</strong></h6>
 				 {{-- link_to_route('auth/logout/{id}', 'logout', array(Auth::user()['id'])) --}} 
@@ -31,6 +31,9 @@
 				<form id="add_job_link" action="{{ route('admin.jobs.create') }}">
 				<button class="large green"><i class="fa fa-plus"></i> add job </button>
 				</form>
+			</div>
+			<div class="col_2 column right">
+				<a href="/user/{id}/dashboard"><i class="fa fa-user large green"></i> User Dashboard </a></button>
 			</div>
 		</header>
 
