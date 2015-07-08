@@ -33,7 +33,10 @@
 				</form>
 			</div>
 			<div class="col_2 column right">
-				<a href="/user/{id}/dashboard"><i class="fa fa-user large green"></i> User Dashboard </a></button>
+				<a href="/user/{id}/dashboard"><i class="fa fa-user large green"></i> User Dashboard </a>
+			</div>
+			<div class="col_2 column right">
+				<a href="/admin/jobs"><i class="large green"></i> Admin </a>
 			</div>
 		</header>
 

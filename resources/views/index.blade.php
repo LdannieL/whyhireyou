@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="search_area" class="col_12 column">
-	<form class="horizontal" method="post" action="/jobs/browse">
+	<form class="horizontal" method="post" action="/">
 		<input name="keywords" id="keywords" type="text" placeholder="Enter keywords...">
 		<select name="states" id="select_state">
 			<option> select state </option>
@@ -18,7 +18,7 @@
 					<option value="{{ $category->id }}">{{ $category->name }}</option>
 				@endforeach
 		</select>
-		<button type="submit"> sumbit </button>
+		<button type="submit"> search jobs </button>
 	</form>
 </div>
 <br>
