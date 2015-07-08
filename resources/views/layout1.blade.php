@@ -17,7 +17,7 @@
 	<div id="container" class="grid">
 		<header>
 			<div class="col_4 column">
-				<h1><a href="{{ route('home') }}"><strong>jobs</strong>Board</a></h1>	
+				<h1><a href="{{ route('home') }}"><strong>WhyHire</strong>You</a></h1>	
 			</div>
 			<div class="col_6 column right welcome">
 				@if(Auth::user()['id'])
@@ -27,7 +27,7 @@
 				@endif
 			</div>	
 			<div class="col_2 column right">
-				<form id="add_job_link" action="admin/jobs/create">
+				<form id="add_job_link" action="{{ route('admin.jobs.create') }}">
 				<button class="large green"><i class="fa fa-plus"></i> add job </button>
 				</form>
 			</div>
@@ -41,7 +41,7 @@
 				<li>
 					<a href="/"><i class="fa fa-desktop"></i> browse jobs </a></li>
 				<li>
-					<a href="auth/register"><i class="fa fa-user"></i> register </a></li>
+					<a href="auth/register/{one?}"><i class="fa fa-user"></i> register </a></li>
 				<li>
 					<a href="auth/login"><i class="fa fa-key"></i> login </a></li>
 			</ul>

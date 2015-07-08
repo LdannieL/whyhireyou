@@ -24,7 +24,7 @@ Route::get('/landing', function () {
     return view('landing.index');
 });
 
-Route::post('logout', array('as' => 'auth.logout', 'uses' => 'AuthController@getLogout'));
+Route::post('logout', array('as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout'));
 
 Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
 	Route::get('/{id}/dashboard', function () {
@@ -35,7 +35,7 @@ Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
 
 Route::get('/', ['as' => 'home', 'uses' => 'JobsController@index']);
 
-Route::get('/{id}', 'JobsController@show');
+Route::get('/{id}', ['as' => 'job', 'uses' =>'JobsController@show']);
 
 Route::group(['prefix' => "admin", 'before' => 'middleware'], function(){
 // Route::group(['prefix' => "admin"], function(){
