@@ -35,7 +35,40 @@ font-family: "Arimo", arial, verdana, sans-serif;
 }
 
 blockquote{
-font-family: "Arimo", arial, verdana, sans-serif;
+	font-family: "Arimo", arial, verdana, sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+
+li{
+	list-style: none;
+}
+
+label{
+	display: inline-block;
+	width: 150px;
+}
+
+input[type='text'],input[type='email'],input[type='password'], select{
+	width: 250px;
+	height: 30px;
+	padding: 4px;
+	margin: 10px 0 10px 0;
+}
+
+select{
+	height: 30px;
+	width: 200px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 6px #ccc;
+}
+
+textarea{
+	width: 250px;
 }
 
 /*---------------------------------
@@ -48,6 +81,13 @@ color:#000;
 background:#efefef url(css/img/gray_jean.png);
 font:normal 0.9em/150% 'Arimo', arial, verdana, sans-serif;
 text-shadow: 0 0 1px transparent; /* google font pixelation fix */
+}
+
+#container{
+	background: #fff;
+	overflow: hidden;
+	min-height: 300px;
+	max-width: 1120px;
 }
 
 #wrap{
@@ -152,4 +192,92 @@ padding:30px 0;
 border:5px solid #ddd;
 margin:30px 0;
 display:block;
+}
+
+#add_job_link{
+	margin-top: 20px;
+}
+
+#search_area{
+	background: #f4f4f4;
+	overflow: auto;
+	min-height: 100px;
+	padding: 30px 0 0 20px;
+}
+
+#keywords{
+	width: 320px;
+	height: 40px;
+	padding: 4px;
+	margin-right: 10px;
+}
+
+#select_category, #select_state{
+	height: 40px;
+	width: 200px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 6px #ccc;
+	margin-right: 7px;
+	margin-left: 7px;
+}
+
+#listings li{
+	overflow: auto;
+	border-bottom: 1px #aaa dotted;
+	padding: 10px 0 10px 0;
+	list-style: none;
+}
+
+.type{
+	float: left;
+	width: 15%;
+	margin-top: 30px;
+}
+
+.type span {
+	padding: 10px 20px 10px 20px;
+	color: #fff;
+}
+
+.type span.green{
+	background: #81b800;
+}
+
+.type span.blue{
+	background: #4c9ef1;
+}
+
+.description {
+	float: right;
+	width: 85%;
+}
+
+footer {
+
+  	text-align: center;
+ 	padding: 30px 0 30px 0;
+}
+
+footer a:link {
+    color: #aaa;
+}
+
+footer a:visited {
+    color: #aaa;
+}
+
+footer a:hover  {
+    color: #4cae4c;
+}
+
+#alex{
+  vertical-align: 25%;
+}
+
+#category_block li{
+	width: 200px;
+	float: left;
+	padding: 0 10px 0 0;
 }

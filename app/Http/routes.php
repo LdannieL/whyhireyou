@@ -43,3 +43,16 @@ Route::group(['prefix' => "admin", 'middleware' => 'auth'], function(){
 	Route::resource('categories','AdminCategoryController');
 });
 
+Route::post('search', 
+  array('uses' => 'JobsController@search', 'as' => 'search'));
+
+Route::get('results/{keyword?}/{state?}/{category?}', 
+  array('uses' => 'JobsController@searchResult', 'as' => 'searchResult'));
+
+Route::get('thankyou', array('as' => 'thankyou', function () {
+	    return view('thankyou');
+}));
+
+// Route::get('/thankyou', function () {
+//     return view('thankyou');
+// });

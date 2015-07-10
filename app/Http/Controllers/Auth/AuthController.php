@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use App\Models\User;
+use \Redirect;
 
 class AuthController extends Controller {
 
@@ -40,24 +41,10 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
-	// protected $redirectPath = 'user/{id}/dashboard';
 
-
-	// public function Login($id){
- //        if(Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]))
-
- //    		return Redirect::to('/user/{id}/dashboard');
-	// }
-
- //    public function Login(){
- //        if(Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')])){
-
- //    return $user = Auth::user();
-	// }
-
-    public function postRegister()
-    {
-        return redirect('/');
-    }
+    // public function postRegister()
+    // {
+    //     return redirect('/')->withMessage('Thank you for registering.');
+    // }
 
 }

@@ -14,7 +14,6 @@
 			{{{ date('Y-m-d', strtotime($job->created_at))}}}
 		</span></p>
 		{!! $job->description !!} 
-		{!! link_to_route('job', 'Read More &rsaquo;', array($job->id)) !!}
 		
 	</div>
 	<p>{!! link_to_route('home', '&lsaquo; Back') !!}</p>

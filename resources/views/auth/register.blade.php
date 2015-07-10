@@ -18,7 +18,7 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/register">
+					<form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="/auth/register">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -46,6 +46,25 @@
 							<label class="col-md-4 control-label">Confirm Password</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password_confirmation">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Role</label>
+							<div class="col-md-6">
+							<select name="role" class="form-control" id="select_role">
+								<option> select your role </option>
+								<option> User </option>
+								<option> Employer </option>
+								<option> Administrator </option>
+							</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Choose an image</label>
+							<div class="col-md-6">
+								<input type="file" name="image" id="image">
 							</div>
 						</div>
 

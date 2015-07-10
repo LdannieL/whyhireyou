@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Why Hire You</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	{!! HTML::script('assets/plugins/3d-bold-navigation/js/modernizr.js') !!}<!-- KICKSTART -->
 	{!! HTML::style('css/kickstart.css', ['media'=>'all']) !!} <!-- KICKSTART -->
-	{!! HTML::style('style.css') !!}	
+	{!! HTML::style('style.css', ['media'=>'all']) !!}
+	{!! HTML::script('js/kickstart.js') !!}<!-- KICKSTART -->	
 </head>
 <body>
 	
@@ -58,12 +60,18 @@
 
 		<div class="col_12 column">
 			@if (Session::has( 'message') )
-		        <div class="alert-box success">
+				{{-- <div class="notice success"><i class="icon-ok icon-large"></i> --}}
+		        <div class="notice success"><i class="icon-ok icon-large"></i>
 		            {{{ Session::get('message') }}}
-		        </div>
+		        <a href="#close" class="icon-remove"></a></div>
 	   		@endif
+	   		@if(Session::has('error'))
+		        <div class="notice error"><i class="icon-remove-sign icon-large"></i>
+		            {{Session::get('error')}}
+		        <a href="#close" class="icon-remove"></a></div>
+	        @endif
 			@yield('content')
-		</div>
+		</div> 
 
 		<div class="clearfix"></div>
 

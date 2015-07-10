@@ -3,19 +3,24 @@
 @section('content')
 
 <div id="search_area" class="col_12 column">
-	<form class="horizontal" method="post" action="/">
+	<form class="horizontal" method="post" action="{{ route('search') }}">
 		<input name="keywords" id="keywords" type="text" placeholder="Enter keywords...">
 		<select name="states" id="select_state">
 			<option> select state </option>
-			<option value="NY"> New York </option>
+				@foreach($jobs as $job)
+					{{-- <option value="{{ $job->id }}">{{ $job->state }}</option> --}}
+					<option>{{ $job->state }}</option>
+				@endforeach
+{{-- 			<option value="NY"> New York </option>
 			<option value="IL"> Illinois </option>
 			<option value="MS"> Massachusetts </option>
-			<option value="FL"> Florida </option>
+			<option value="FL"> Florida </option> --}}
 		</select>
 		<select name="categories" id="select_category">
 			<option> select category </option>
 				@foreach($categories as $category)
-					<option value="{{ $category->id }}">{{ $category->name }}</option>
+					{{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}}
+					<option>{{ $category->name }}</option>
 				@endforeach
 		</select>
 		<button type="submit"> search jobs </button>
