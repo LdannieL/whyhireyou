@@ -37,6 +37,7 @@
 				</div>
 				<div class="description">
 					<h5> {{ $job->title }} ({{ $job->city }}, {{ $job->state }})</h5>
+					<h6> {{ $job->category->name }} </h6>
 					<p><span id="list_date">
 						{{{ date('Y-m-d', strtotime($job->created_at))}}}
 					</span></p>
@@ -46,6 +47,9 @@
 				</div>
 			</li>
 		@endforeach
+		
 	</ul>
-
+	<ul class="button-bar">
+		{!! $jobs->render() !!} 
+	</ul>
 @stop

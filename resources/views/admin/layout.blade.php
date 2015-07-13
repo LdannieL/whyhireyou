@@ -46,11 +46,36 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Auth::guest())
+                        <li><a href="/auth/login">Login</a></li>
+                        <li><a href="/auth/register">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/auth/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
 <div class="container">
+            @if (Session::has( 'message') )
+                {{-- <div class="notice success"><i class="icon-ok icon-large"></i> --}}
+                <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    {{{ Session::get('message') }}}
+                <a href="#close" class="icon-remove"></a></div>
+            @endif
+            @if(Session::has('error'))
+                <div class="notice error"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+                    {{Session::get('error')}}
+                <a href="#close" class="icon-remove"></a></div>
+            @endif
     <div class="row">
         <div class="col-md-12">@yield('content')</div>
     </div>

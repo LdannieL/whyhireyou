@@ -41,6 +41,9 @@ Route::group(['prefix' => "admin", 'middleware' => 'auth'], function(){
 // Route::group(['prefix' => "admin"], function(){
 	Route::resource('jobs','AdminJobController');
 	Route::resource('categories','AdminCategoryController');
+	Route::resource('users','AdminUserController');
+	Route::resource("job1s","AdminJob1Controller");
+	Route::resource("types","AdminTypeController");
 });
 
 Route::post('search', 
@@ -49,7 +52,7 @@ Route::post('search',
 Route::get('results/{keyword?}/{state?}/{category?}', 
   array('uses' => 'JobsController@searchResult', 'as' => 'searchResult'));
 
-Route::get('thankyou', array('as' => 'thankyou', function () {
+Route::get('/thankyou', array('as' => 'thankyou', function () {
 	    return view('thankyou');
 }));
 

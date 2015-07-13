@@ -1,7 +1,8 @@
 <?php namespace App\Services;
 
 use App\Models\User;
-use \Image;
+use Input;
+use Image;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -30,10 +31,10 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		// $image = Input::file('image');
-						// $image = $data['image'];
-						// $filename = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
-						// Image::make($image->getRealPath())->resize(468, 249)->save('public/img/users/'.$filename);
+		$image = Input::file('image');
+						$image = $data['image'];
+						$filename = date('Y-m-d-H-i-s')."-".$image->getClientOriginalName();
+						Image::make($image->getRealPath())->resize(468, 249)->save('img/users/'.$filename);
 			// $product->image = 'img/products/'.$filename;
 
 		return User::create([
@@ -42,7 +43,8 @@ class Registrar implements RegistrarContract {
 			'password' => bcrypt($data['password']),
 			'role' => $data['role'],
 			// 'image' => 'img/users/'.$filename,
-			'image' => 'img/users/img',
+			// 'image' => 'img/users/img',
+			'image' => 'img/products/'.$filename,
 		]);
 	}
 

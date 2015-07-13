@@ -21,7 +21,7 @@
 			<div class="col_4 column">
 				<h1><a href="{{ route('home') }}"><strong>WhyHire</strong>You</a></h1>	
 			</div>
-			<div class="col_4 column right welcome">
+			<div class="col_2 column right welcome">
 				@if(Auth::user()['id'])
 					<h6> welcome <strong>{{ Auth::user()['name']}}</strong></h6>
 				 {{-- link_to_route('auth/logout/{id}', 'logout', array(Auth::user()['id'])) --}} 
@@ -34,11 +34,17 @@
 				<button class="large green"><i class="fa fa-plus"></i> add job </button>
 				</form>
 			</div>
-			<div class="col_2 column right">
+			<div class="col_1 column right">
 				<a href="/user/{id}/dashboard"><i class="fa fa-user large green"></i> User Dashboard </a>
 			</div>
-			<div class="col_2 column right">
-				<a href="/admin/jobs"><i class="large green"></i> Admin </a>
+			<div class="col_1 column right">
+				<a href="/admin/job1s"><i class="large green"></i> Admin Jobs </a>
+			</div>
+			<div class="col_1 column right">
+				<a href="/admin/categories"><i class="large green"></i> Admin Categories</a>
+			</div>
+			<div class="col_1 column right">
+				<a href="/admin/types"><i class="large green"></i> Admin Types</a>
 			</div>
 		</header>
 
