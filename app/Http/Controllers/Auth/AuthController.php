@@ -23,7 +23,7 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
-	protected $redirectPath = 'user/{id}/dashboard';
+	// protected $redirectPath = 'user/{id}/dashboard';
 
 
 	/**
