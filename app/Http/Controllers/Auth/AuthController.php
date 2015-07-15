@@ -5,6 +5,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Illuminate\Http\Request;
+
 use App\Models\User;
 use \Redirect;
 
@@ -59,5 +61,17 @@ class AuthController extends Controller implements AuthenticateUserListener{
     // {
     //     return redirect('/')->withMessage('Thank you for registering.');
     // }
+
+    public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
+    {
+    	$hasCode = $request->has('code');
+    	return $authenticateUser->execute($hasCode, $this);
+    	// return $authenticateUser->execute($request->has('code'), $this);
+    }
+
+	public function userHasLoggedIn($user)
+	{
+		return redirect('/');
+	}
 
 }
