@@ -15,6 +15,8 @@
 
 // Route::get('home', 'HomeController@index');
 
+Route::get('/auth/loginwithfacebook', ['as' => 'loginwithfacebook', 'uses' => 'Auth\AuthController@loginFacebook']);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

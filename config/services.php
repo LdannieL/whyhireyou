@@ -34,4 +34,20 @@ return [
 		'secret' => '',
 	],
 
+	// 'facebook' => [
+	// 'client_id' => env('client_id', 'FACEBOOK_APP_ID'),
+	// 'client_secret' => env('client_secret', 'FACEBOOK_APP_SECRET'),
+	// // 'client_id' => getenv('FACEBOOK_App_ID'),
+	// // 'client_secret' => getenv('FACEBOOK_App_Secret'),
+	// 'redirect' => 'http://localhost:8000/auth/login'
+	// ],
+
+	'facebook' => [
+	'client_id' => getenv('FACEBOOK_APP_ID'),
+	'client_secret' => getenv('FACEBOOK_APP_SECRET'),
+	// 'client_id' => getenv('FACEBOOK_App_ID'),
+	// 'client_secret' => getenv('FACEBOOK_App_Secret'),
+	'redirect' => 'http://localhost:8000/auth/loginwithfacebook'
+	],
+
 ];

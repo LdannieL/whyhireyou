@@ -22,8 +22,15 @@
 				<h1><a href="{{ route('home') }}"><strong>WhyHire</strong>You</a></h1>	
 			</div>
 			<div class="col_2 column right welcome">
-				@if(Auth::user()['id'])
+{{-- 				@if(Auth::user()['id'])
 					<h6> welcome <strong>{{ Auth::user()['name']}}</strong></h6>
+				 link_to_route('auth/logout/{id}', 'logout', array(Auth::user()['id'])) 
+					<a href="/auth/logout"><i class="fa fa-user"></i> logout </a></li>
+					{{-- link_to_route('auth.logout', 'logout', array(Auth::user()['id'])) !!} --}}
+				{{--@endif --}}
+				@if(Auth::check())
+					{{-- <h6> welcome <strong>{{ Auth::user()['name']}}</strong></h6> --}}
+					<h6> welcome <strong>{!! Auth::user()->name !!}</strong></h6>
 				 {{-- link_to_route('auth/logout/{id}', 'logout', array(Auth::user()['id'])) --}} 
 					<a href="/auth/logout"><i class="fa fa-user"></i> logout </a></li>
 					{{-- link_to_route('auth.logout', 'logout', array(Auth::user()['id'])) !!} --}}
@@ -59,6 +66,8 @@
 					<a href="/auth/register"><i class="fa fa-user"></i> register </a></li>
 				<li>
 					<a href="/auth/login"><i class="fa fa-key"></i> login </a></li>
+				<li>
+					<a href="/auth/loginwithfacebook"><i class="fa fa-key"></i> login with facebook </a></li>	
 			</ul>
 		</div>
 

@@ -8,7 +8,11 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Models\User;
 use \Redirect;
 
-class AuthController extends Controller {
+use App\AuthenticateUser;
+use App\AuthenticateUserListener;
+
+// class AuthController extends Controller {
+class AuthController extends Controller implements AuthenticateUserListener{
 
 	/*
 	|--------------------------------------------------------------------------
@@ -23,7 +27,7 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
-	// protected $redirectPath = 'user/{id}/dashboard';
+	protected $redirectPath = 'user/{id}/dashboard';
 
 
 	/**
@@ -41,6 +45,15 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	// public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
+ //    {
+ //    	return $authenticateUser->execute($request->has('code'), $this);
+ //    }
+
+	// public function userHasLoggedIn($user)
+	// {
+	// 	return redirect('/');
+	// }
 
     // public function postRegister()
     // {
