@@ -55,7 +55,9 @@ return [
 	'client_id' => getenv('TWITTER_CLIENT_ID'),
 	'client_secret' => getenv('TWITTER_CLIENT_SECRET'),
 	// 'redirect' => 'http://127.0.0.1:8000/auth/login/twitter',
-	'redirect' => 'http://127.0.0.1/WhyHireYou/public/index.php/login/twitter',
+	'redirect' => 'http://dev2.whyhireyou.com/auth/login/twitter',
+	// 'redirect' => 'http://whyhireyou.dev/auth/login/twitter',
+	// 'redirect' => 'http://127.0.0.1/WhyHireYou/public/index.php/login/twitter',
 	// 'redirect' => 'http://localhost:8000',
 	], 
 
