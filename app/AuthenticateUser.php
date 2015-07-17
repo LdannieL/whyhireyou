@@ -4,6 +4,7 @@
 use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Repositories\UserRepository;
+use \Input;
 
 class AuthenticateUser{
 	private $users;
@@ -19,6 +20,17 @@ class AuthenticateUser{
 
 	}
 
+			public function executes($hasCode, AuthenticateUserListener $listener, $provider)
+			{
+				// $provider = 'twitter';
+				// $provider = 'github';
+				if ( ! $hasCode) return $this->getAuthorizationFirstS($provider);
+				$user = $this->users->findByEmailOrCreate($this->getSocialUser($provider));
+				$this->auth->login($user, true);
+
+				return $listener->userHasLoggedIn($user); 
+			}
+
 	public function execute($hasCode, AuthenticateUserListener $listener)
 	// public function execute($hasCode, $listener)
 	{
@@ -29,6 +41,20 @@ class AuthenticateUser{
 
 		return $listener->userHasLoggedIn($user); 
 	}
+
+			private function getAuthorizationFirstS($provider)
+			{
+				// $provider = 'twitter';
+				// $provider = 'github';
+				return $this->socialite->driver($provider)->redirect();
+			}
+
+			private function getSocialUser($provider)
+			{
+				// $provider = 'twitter';
+				// $provider = 'github';
+				return $this->socialite->driver($provider)->user();
+			}
 
 	private function getAuthorizationFirst()
 	{

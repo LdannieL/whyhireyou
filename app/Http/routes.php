@@ -16,17 +16,26 @@
 // Route::get('home', 'HomeController@index');
 
 Route::get('/auth/loginwithfacebook', ['as' => 'loginwithfacebook', 'uses' => 'Auth\AuthController@loginFacebook']);
+Route::get('/auth/login/{provider}', ['as' => 'loginsocial', 'uses' => 'Auth\AuthController@loginSocial']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::post('logout', array('as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout'));
+
 Route::get('/landing', function () {
     return view('landing.index');
 });
 
-Route::post('logout', array('as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout'));
+Route::get('/quiz/{id?}', array('as' => 'quiz', function () { 
+    return view('quiz');
+}));
+
+Route::get('/statement', ['as' => 'talentstar', 'uses' => 'StatementController@index']);
+
+Route::get('/statement/{id}', ['as' => 'statements', 'uses' =>'StatementController@show']);
 
 Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
 	Route::get('/{id}/dashboard', function () {
@@ -46,6 +55,9 @@ Route::group(['prefix' => "admin", 'middleware' => 'auth'], function(){
 	Route::resource('users','AdminUserController');
 	Route::resource("job1s","AdminJob1Controller");
 	Route::resource("types","AdminTypeController");
+	Route::resource("statements","AdminStatementController");
+	Route::resource("choices","AdminChoiceController");
+	Route::resource("profiles","AdminProfileController");
 });
 
 Route::post('search', 

@@ -47,7 +47,22 @@ return [
 	'client_secret' => getenv('FACEBOOK_APP_SECRET'),
 	// 'client_id' => getenv('FACEBOOK_App_ID'),
 	// 'client_secret' => getenv('FACEBOOK_App_Secret'),
-	'redirect' => 'http://localhost:8000/auth/loginwithfacebook'
+	'redirect' => 'http://localhost:8000/auth/login/facebook',
+	// 'redirect' => 'http://localhost:8000/auth/loginwithfacebook'
 	],
 
+	'twitter' => [
+	'client_id' => getenv('TWITTER_CLIENT_ID'),
+	'client_secret' => getenv('TWITTER_CLIENT_SECRET'),
+	// 'redirect' => 'http://127.0.0.1:8000/auth/login/twitter',
+	'redirect' => 'http://127.0.0.1/WhyHireYou/public/index.php/login/twitter',
+	// 'redirect' => 'http://localhost:8000',
+	], 
+
+	'github' => [
+	'client_id' => getenv('GITHUB_CLIENT_ID'),
+	'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
+	'redirect' => 'http://localhost:8000/auth/login/github',
+	// 'redirect' => 'http://localhost:8000',
+	],
 ];

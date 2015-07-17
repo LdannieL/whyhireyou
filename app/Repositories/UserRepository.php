@@ -3,44 +3,48 @@
 use App\Models\User;
 
  class UserRepository {
- 	public function findByEmailOrCreate($userData)
- 	{
- 		// dd($userData);
- 		$user = User::where('email', '=', $userData->email)->first();
+    public function findByEmailOrCreate($userData)
+    {
+        // dd($userData);
+        $user = User::where('email', '=', $userData->email)->first();
         if(!$user) {
-        	if(!$userData->email) $userData->email = 'some'.rand(1,1000).'@email.com';
+            if(!$userData->email) $userData->email = 'some'.rand(1,1000).'@email.com';
+            if(!$userData->name) $userData->name = 'Anonymus';
             $user = User::create([
-                // 'provider_id' => $userData->id,
+                'provider_id' => $userData->id,
                 'name' => $userData->name,
                 // 'username' => $userData->nickname,
-                		// 'email' => $userData->email,
+                        // 'email' => $userData->email,
                 'email' => $userData->email,
-                'avatar' => $userData->avatar,
+                'image' => $userData->avatar,
                 // 'avatar' => $userData->avatar_original,
                 // 'active' => 1,
             ]);
         }
 
-        // $this->checkIfUserNeedsUpdating($userData, $user);
+        $this->checkIfUserNeedsUpdating($userData, $user);
         return $user;
+    }
 
- 		// return User::firstOrCreate([
+        public function checkIfUserNeedsUpdating($userData, $user) {
 
- 		// // 	// 'name' => $userData->getName(),
- 		// // 	// 'email' => $userData->getEmail(),
- 		// // 	// 'image' => $userData->getAvatar()
+        $socialData = [
+            'name' => $userData->name,
+            'email' => $userData->email,
+            'image' => $userData->avatar
+        ];
+        $dbData = [           
+            'name' => $user->name,
+            'email' => $user->email,
+            'image' => $user->avatar
+        ];
 
- 		// 'name' => $userData->name,
- 		// 'email' => $userData->email,
- 		// 'image' => $userData->avatar()
-
-
-
- 		// 			// 'email' => $userData->email,
- 		// 	// 'email' => $data['email'],
-
- 		// 	// 'image' => $userData->avatar
- 			// ]);
- 	}
+        if (!empty(array_diff($socialData, $dbData))) {
+            $user->name = $userData->name;
+            $user->email = $userData->email;
+            $user->image = $userData->avatar;
+            $user->save();
+        }
+    }
 
  }

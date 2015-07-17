@@ -35,6 +35,12 @@
 					<a href="/auth/logout"><i class="fa fa-user"></i> logout </a></li>
 					{{-- link_to_route('auth.logout', 'logout', array(Auth::user()['id'])) !!} --}}
 				@endif
+			</div>
+			<div class="col_2 column left" id="quiz"><style type="text/css">#quiz {display:inline-block;}</style>
+				{{-- <button class="large blue"><i class=" fa-lightbulb-o"><a href="/quiz"> start quizz </a></button> --}}
+				<form id="start quiz" action="/quiz/1">
+				<button class="large blue"><i class=" fa-lightbulb-o"></i> start quizz </button>
+				</form>
 			</div>	
 			<div class="col_2 column right">
 				<form id="add_job_link" action="{{ route('admin.jobs.create') }}">
@@ -67,7 +73,13 @@
 				<li>
 					<a href="/auth/login"><i class="fa fa-key"></i> login </a></li>
 				<li>
-					<a href="/auth/loginwithfacebook"><i class="fa fa-key"></i> login with facebook </a></li>	
+					{{-- <a href="/auth/loginwithfacebook"><i class="fa fa-key"></i> login with facebook </a></li> --}}
+					<a href="/auth/login/facebook"><i class="fa fa-key"></i> login with facebook </a></li>
+				<li>
+					<a href="/auth/login/twitter"><i class="fa fa-key"></i> login with twitter </a></li>
+				<li>
+				{{--{!! link_to_route('loginsocial', 'login with github;', array('github')) !!}--}}
+					<a href="/auth/login/github"><i class="fa fa-key"></i> login with github </a></li>	
 			</ul>
 		</div>
 

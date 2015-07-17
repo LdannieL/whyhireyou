@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+// <--- if I use this one, it can't get $provider from url
+use App\Http\Controllers\Controller;  
+// use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -9,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use \Redirect;
+use \Input;
 
 use App\AuthenticateUser;
 use App\AuthenticateUserListener;
@@ -61,6 +64,13 @@ class AuthController extends Controller implements AuthenticateUserListener{
     // {
     //     return redirect('/')->withMessage('Thank you for registering.');
     // }
+public function loginSocial(AuthenticateUser $authenticateUser, Request $request, $provider = null)
+		    // public function loginSocial(AuthenticateUser $authenticateUser, Request $request, $provider)
+		    {
+		    	// $provider = Input::get('provider');
+		    	$hasCode = $request->has('code');
+		    	return $authenticateUser->executes($hasCode, $this, $provider);
+		    }
 
     public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
     {
