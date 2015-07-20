@@ -1,14 +1,21 @@
 @extends('layout1')
 
 @section('content')
-    <div class="page-header clearfix">
+{{--     <div class="page-header clearfix">
         <h1 class="pull-left">Statements</h1>
          <a class="btn btn-success pull-right" href="{{ route('statements.create') }}">Create</a>
-    </div>
+    </div> --}}
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped">
+        <h1>Talent Star</h1>
+        <hr>
+        <h4>You’re Unique. Discover the talents that drive your success.</h4>
+        <h4>Unlock your personal leadership style with Talent Star.</h4> 
+        {{-- <h4>Which statement best describes you?</h4> --}}
+<br>
+        <a class="btn btn-primary" href="/statement/1">Start Quiz</a>
+{{--             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -42,8 +49,8 @@
                 </tbody>
             </table>
 
-            {!! $statements->render() !!}
-        </div>
+            {!! $statements->render() !!} --}}
+       {{--  </div> --}}
     </div>
 
 

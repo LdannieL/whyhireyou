@@ -19,17 +19,17 @@
                      <p class="form-control-static">{{$choice->statement_id}}</p>
                 </div>
                     <div class="form-group">
-                     <label for="statement_number">STATEMENT_NUMBER</label>
-                     <p class="form-control-static">{{$choice->statement_number}}</p>
+                     <label for="statement_number">PROFILE_ID</label>
+                     <p class="form-control-static">{{$choice->profile_id}}</p>
                 </div>
                     <div class="form-group">
                      <label for="text">TEXT</label>
                      <p class="form-control-static">{{$choice->text}}</p>
                 </div>
-                    <div class="form-group">
+{{--                     <div class="form-group">
                      <label for="profile">PROFILE</label>
                      <p class="form-control-static">{{$choice->profile}}</p>
-                </div>
+                </div> --}}
                     <div class="form-group">
                      <label for="value">VALUE</label>
                      <p class="form-control-static">{{$choice->value}}</p>

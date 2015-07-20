@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Choice;
+use App\Models\Statement;
 use Illuminate\Http\Request;
 
 class AdminChoiceController extends Controller {
@@ -15,7 +16,7 @@ class AdminChoiceController extends Controller {
 	 */
 	public function index()
 	{
-		$choices = Choice::paginate(10);
+		$choices = Choice::with('statement','profile')->paginate(10);
 
 		return view('admin.choices.index', compact('choices'));
 	}
@@ -41,9 +42,10 @@ class AdminChoiceController extends Controller {
 		$choice = new Choice();
 
 		$choice->statement_id = $request->input("statement_id");
-        $choice->statement_number = $request->input("statement_number");
+		$choice->statement_id = $request->input("profile_id");
+        // $choice->statement_number = $request->input("statement_number");
         $choice->text = $request->input("text");
-        $choice->profile = $request->input("profile");
+        // $choice->profile = $request->input("profile");
         $choice->value = $request->input("value");
 
 		$choice->save();
@@ -59,7 +61,7 @@ class AdminChoiceController extends Controller {
 	 */
 	public function show($id)
 	{
-		$choice = Choice::findOrFail($id);
+		$choice = Choice::with('statement','profile')->findOrFail($id);
 
 		return view('admin.choices.show', compact('choice'));
 	}
@@ -72,7 +74,7 @@ class AdminChoiceController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$choice = Choice::findOrFail($id);
+		$choice = Choice::with('statement','profile')->findOrFail($id);
 
 		return view('admin.choices.edit', compact('choice'));
 	}
@@ -86,12 +88,13 @@ class AdminChoiceController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
-		$choice = Choice::findOrFail($id);
+		$choice = Choice::with('statement','profile')->findOrFail($id);
 
 		$choice->statement_id = $request->input("statement_id");
-        $choice->statement_number = $request->input("statement_number");
+		$choice->statement_id = $request->input("profile_id");
+        // $choice->statement_number = $request->input("statement_number");
         $choice->text = $request->input("text");
-        $choice->profile = $request->input("profile");
+        // $choice->profile = $request->input("profile");
         $choice->value = $request->input("value");
 
 		$choice->save();

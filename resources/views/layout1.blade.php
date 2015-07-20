@@ -38,7 +38,7 @@
 			</div>
 			<div class="col_2 column left" id="quiz"><style type="text/css">#quiz {display:inline-block;}</style>
 				{{-- <button class="large blue"><i class=" fa-lightbulb-o"><a href="/quiz"> start quizz </a></button> --}}
-				<form id="start quiz" action="/quiz/1">
+				<form id="start quiz" action="/statement">
 				<button class="large blue"><i class=" fa-lightbulb-o"></i> start quizz </button>
 				</form>
 			</div>	

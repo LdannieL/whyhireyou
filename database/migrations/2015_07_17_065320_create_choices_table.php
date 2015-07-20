@@ -16,9 +16,10 @@ class CreateChoicesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('statement_id')->unsigned();
-			$table->integer('statement_number')->unsigned();
+			// $table->integer('statement_number');
+			$table->integer('profile_id')->unsigned();
 			$table->text('text');
-			$table->string('profile');
+			// $table->string('profile');
 			$table->integer('value')->default(1);
 			$table->timestamps();
 		});

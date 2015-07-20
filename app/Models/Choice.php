@@ -7,7 +7,7 @@ class Choice extends Model {
 	protected $table = 'choices';
 
 	public function statement(){
-        return $this->belongsTo('App\Models\Stetement');
+        return $this->belongsTo('App\Models\Statement');
     }
 
     public function profile(){

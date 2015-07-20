@@ -19,7 +19,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('statements.update', $statement->id) }}" method="POST">
+            <form action="{{ route('admin.statements.update', $statement->id) }}" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -43,7 +43,7 @@
                        @endif
                     </div>
 
-                <a class="btn btn-default" href="{{ route('statements.index') }}">Back</a>
+                <a class="btn btn-default" href="{{ route('admin.statements.index') }}">Back</a>
                 <button class="btn btn-primary" type="submit" >Save</button>
             </form>
         </div>

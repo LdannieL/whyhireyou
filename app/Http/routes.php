@@ -37,6 +37,8 @@ Route::get('/statement', ['as' => 'talentstar', 'uses' => 'StatementController@i
 
 Route::get('/statement/{id}', ['as' => 'statements', 'uses' =>'StatementController@show']);
 
+Route::post('statement/process', 'StatementController@processForm');
+
 Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
 	Route::get('/{id}/dashboard', function () {
 	    return view('admin.index');

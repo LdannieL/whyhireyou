@@ -10,4 +10,8 @@ class Profile extends Model {
         return $this->hasMany('App\Models\Choice');
     }
 
+    public function statement(){
+        return $this->belongsTo('App\Models\Statement');
+    }
+
 }

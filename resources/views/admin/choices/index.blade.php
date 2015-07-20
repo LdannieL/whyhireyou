@@ -13,9 +13,9 @@
                     <tr>
                         <th>ID</th>
                         <th>STATEMENT_ID</th>
-                        <th>STATEMENT_NUMBER</th>
+                        <th>PROFILE_ID</th>
                         <th>TEXT</th>
-                        <th>PROFILE</th>
+                        {{-- <th>PROFILE</th> --}}
                         <th>VALUE</th>
                         <th class="text-right">OPTIONS</th>
                     </tr>
@@ -27,9 +27,9 @@
                 <tr>
                     <td>{{$choice->id}}</td>
                     <td>{{$choice->statement_id}}</td>
-                    <td>{{$choice->statement_number}}</td>
+                    <td>{{$choice->profile->profile}}</td>
                     <td>{{$choice->text}}</td>
-                    <td>{{$choice->profile}}</td>
+                    {{-- <td>{{$choice->profile}}</td> --}}
                     <td>{{$choice->value}}</td>
 
                     <td class="text-right">

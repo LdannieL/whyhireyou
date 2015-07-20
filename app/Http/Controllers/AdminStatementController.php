@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Statement;
 use App\Models\Choice;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class AdminStatementController extends Controller {
@@ -17,7 +18,8 @@ class AdminStatementController extends Controller {
 	public function index()
 	{
 		$statements = Statement::with('choices')->paginate(10);
-		$choices = Choice::get();
+		// $choices = Choice::with('profiles')->get();
+		// $profiles = Profile::get();
 
 		return view('admin.statements.index', compact('statements','choices'));
 	}
@@ -59,9 +61,10 @@ class AdminStatementController extends Controller {
 	public function show($id)
 	{
 		$statement = Statement::with('choices')->find($id);
+		// $choices = Choice::with('profiles')->get();
 		// $statement = Statement::findOrFail($id);
 
-		return view('admin.statements.show', compact('statement'));
+		return view('admin.statements.show', compact('statement','choices'));
 	}
 
 	/**

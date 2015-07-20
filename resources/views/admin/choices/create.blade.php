@@ -28,11 +28,11 @@
                         <span class="help-block">{{ $errors->first("statement_id") }}</span>
                        @endif
                     </div>
-                    <div class="form-group @if($errors->has('statement_number')) has-error @endif">
-                       <label for="statement_number-field">Statement_number</label>
-                    <input type="text" id="statement_number-field" name="statement_number" class="form-control" value="{{ old("statement_number") }}"/>
-                       @if($errors->has("statement_number"))
-                        <span class="help-block">{{ $errors->first("statement_number") }}</span>
+                    <div class="form-group @if($errors->has('profile_id')) has-error @endif">
+                       <label for="statement_number-field">Profile_id</label>
+                    <input type="text" id="profile_id-field" name="profile_id" class="form-control" value="{{ old("profile_id") }}"/>
+                       @if($errors->has("profile_id"))
+                        <span class="help-block">{{ $errors->first("profile_id") }}</span>
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('text')) has-error @endif">
@@ -42,13 +42,13 @@
                         <span class="help-block">{{ $errors->first("text") }}</span>
                        @endif
                     </div>
-                    <div class="form-group @if($errors->has('profile')) has-error @endif">
+{{--                     <div class="form-group @if($errors->has('profile')) has-error @endif">
                        <label for="profile-field">Profile</label>
                     <input type="text" id="profile-field" name="profile" class="form-control" value="{{ old("profile") }}"/>
                        @if($errors->has("profile"))
                         <span class="help-block">{{ $errors->first("profile") }}</span>
                        @endif
-                    </div>
+                    </div> --}}
                     <div class="form-group @if($errors->has('value')) has-error @endif">
                        <label for="value-field">Value</label>
                     <input type="text" id="value-field" name="value" class="form-control" value="{{ old("value") }}"/>

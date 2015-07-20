@@ -9,4 +9,8 @@ class Statement extends Model {
 	public function choices(){
         return $this->hasMany('App\Models\Choice');
     }
+
+    public function profiles(){
+        return $this->hasMany('App\Models\Profile');
+    }
 }
