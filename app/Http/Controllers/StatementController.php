@@ -116,8 +116,9 @@ class StatementController extends Controller {
 		}
 			
 		$result = ['Visionary' => Session::get('visionary'), 'Change Maker' => Session::get('change_maker'), 'Innovator' => Session::get('innovator'), 'Producer' => Session::get('producer'), 'Collaborator' => Session::get('collaborator')];
-		asort($result);
-		// arsort($result);
+		// asort($result);
+		$sortiran = asort($result);
+		arsort($result);
 		$sorted = [];
 		foreach($result as $x => $x_value) {
 			$sorted = [$x => $x_value];
@@ -125,14 +126,24 @@ class StatementController extends Controller {
 		     // echo "<br>";
 		}
 // 		dd($sorted);
-									$primary_style = array_keys(array_slice($sorted,0,1));
+									//RADI OVAKO
+									$primary_style = array_keys(array_slice($result,0,1));
 									$profile_style = $primary_style[0];
 									$profile = Profile::where('style','=',$profile_style)->first();
 									$description = $profile->description;
 									$skills = $profile->skills;
 									$quote = $profile->quote;
 
-									$secondary_style = array_keys(array_slice($sorted,0,1));
+									$secondary_style = array_keys(array_slice($result,1,1));
+									
+									// $primary_style = array_shift($result);
+									// $profile_style = $primary_style[0];
+									// $profile = Profile::where('style','=',$profile_style)->first();
+									// $description = $profile->description;
+									// $skills = $profile->skills;
+									// $quote = $profile->quote;
+
+									// $secondary_style = array_keys(array_slice($sorted,1,1));
 
 									// $primary_style = array_keys(array_slice($sorted,0,1));
 									// $profile_style_primary = $primary_style[0];
@@ -142,17 +153,23 @@ class StatementController extends Controller {
 									// $quote_primary = $profile_primary->quote;
 
 									// $secondary_style = array_keys(array_slice($sorted,0,1));
-									// $profile_style = $secondary_style[0];
-									// $profile_secondary = Profile::where('style','=',$profile_style)->first();
-									// $description_secondary = $profile_secondary->description;
-									// $skills_secondary = $profile_secondary->skills;
-									// $quote_secondary = $profile_secondary->quote;
+									$profile_style_sec = $secondary_style[0];
+									$profile_secondary = Profile::where('style','=',$profile_style_sec)->first();
+									$description_secondary = $profile_secondary->description;
+									$skills_secondary = $profile_secondary->skills;
+									$quote_secondary = $profile_secondary->quote;
 
 		// dd($sorted);
 
 		if($number == $total_no_statements)
 		{
 			var_dump($result);
+			// echo key(reset($result));
+			// echo key($result[1]);
+			// var_dump($sorted);
+			// var_dump($sortiran);
+			// var_dump($primary_style);
+			// var_dump($secondary_style);
 
 			Session::forget('visionary');
 			Session::forget('change_maker');
@@ -160,7 +177,7 @@ class StatementController extends Controller {
 			Session::forget('producer');
 			Session::forget('collaborator');
 
-			return view('statements.final', compact('primary_style','secondary_style','description','skills','quote'));
+			return view('statements.final', compact('primary_style','secondary_style','description','skills','quote', 'description_secondary', 'skills_secondary','quote_secondary'));
 		} else {
 			return redirect()->route('statements', [$next])->withInput();
 		}
