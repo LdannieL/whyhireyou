@@ -35,7 +35,8 @@
                 <ul class="choices">
                     @foreach($choices as $choice)
            {{--          <li><button name="choice" type="submit" class="btn btn-lg btn-primary btn-block" value="{{ $choice->id }}" />{{$choice->text}}</li> --}}
-                    <li><input name="choice" type="radio" value="{{$choice->id}}" />{{$choice->text}}</li>
+                    {{-- <li><input name="choice" type="radio" value="{{$choice->id}}" />{{$choice->text}}</li> --}}
+                    <li><input name="choice" type="radio" value="{{ old("choice") }}" />{{$choice->text}}</li>
                    {{--      <li>{!!Form::radio('choice', '{{ $choice->id }}' ) !!}
                         {{$choice->text}}</li> --}}
                     @endforeach
