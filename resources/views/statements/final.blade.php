@@ -1,4 +1,3 @@
-<?php session_start();?>
 @extends('layout1')
 
 @section('content')
