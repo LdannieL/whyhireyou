@@ -26,8 +26,29 @@ use App\Models\User;
         return $user;
     }
 
-        public function checkIfUserNeedsUpdating($userData, $user) {
+    //     public function checkIfUserNeedsUpdating($userData, $user) {
+    //     $socialData = [
+    //         'name' => $userData->name,
+    //         'email' => $userData->email,
+    //         'image' => $userData->avatar
+    //     ];
+    //     $dbData = [           
+    //         'name' => $user->name,
+    //         'email' => $user->email,
+    //         'image' => $user->avatar
+    //     ];
 
+    //     if (!empty(array_diff($socialData, $dbData)) == false) {
+    //         $user->name = $userData->name;
+    //         $user->email = $userData->email;
+    //         $user->image = $userData->avatar;
+    //         $user->save();
+    //     }
+    // }
+            //solution from php manual
+            // public function _empty($val) { return empty($val); }
+
+        public function checkIfUserNeedsUpdating($userData, $user) {
         $socialData = [
             'name' => $userData->name,
             'email' => $userData->email,
@@ -39,12 +60,24 @@ use App\Models\User;
             'image' => $user->avatar
         ];
 
-        if (!empty(array_diff($socialData, $dbData))) {
+        //Solution for Mac specific or rather php 5.6.2 Fatal error: Can't use function return value in write context in with php fuction empty
+        // if (!empty(array_diff($socialData, $dbData)) == false) {
+        if (!array_diff($socialData, $dbData)){
             $user->name = $userData->name;
             $user->email = $userData->email;
             $user->image = $userData->avatar;
             $user->save();
         }
     }
+
+// $difference = array_diff($socialData, $dbData));
+
+//         if (!empty($difference) {
+//             $user->name = $userData->name;
+//             $user->email = $userData->email;
+//             $user->image = $userData->avatar;
+//             $user->save();
+//         }
+//     }
 
  }
