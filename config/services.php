@@ -47,7 +47,8 @@ return [
 	'client_secret' => getenv('FACEBOOK_APP_SECRET'),
 	// 'client_id' => getenv('FACEBOOK_App_ID'),
 	// 'client_secret' => getenv('FACEBOOK_App_Secret'),
-	'redirect' => 'http://localhost:8000/auth/login/facebook',
+	// 'redirect' => 'http://localhost:8000/auth/login/facebook',
+	'redirect' => 'http://dev2.whyhireyou.com/auth/login/facebook',
 	// 'redirect' => 'http://localhost:8000/auth/loginwithfacebook'
 	],
 
@@ -64,7 +65,8 @@ return [
 	'github' => [
 	'client_id' => getenv('GITHUB_CLIENT_ID'),
 	'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
-	'redirect' => 'http://localhost:8000/auth/login/github',
+	// 'redirect' => 'http://localhost:8000/auth/login/github',
+	'redirect' => 'http://dev2.whyhireyou.com/auth/login/github',
 	// 'redirect' => 'http://localhost:8000',
 	],
 ];
