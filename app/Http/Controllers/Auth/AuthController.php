@@ -68,7 +68,7 @@ public function loginSocial(AuthenticateUser $authenticateUser, Request $request
 		    // public function loginSocial(AuthenticateUser $authenticateUser, Request $request, $provider)
 		    {
 		    	// $provider = Input::get('provider');
-		    	$hasCode = $request->has('code');
+		    	$hasCode = ($request->has('code') || $request->has('oauth_token'));
 		    	return $authenticateUser->executes($hasCode, $this, $provider);
 		    }
 

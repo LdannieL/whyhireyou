@@ -74,12 +74,16 @@
 					<a href="/auth/login"><i class="fa fa-key"></i> login </a></li>
 				<li>
 					{{-- <a href="/auth/loginwithfacebook"><i class="fa fa-key"></i> login with facebook </a></li> --}}
-					<a href="/auth/login/facebook"><i class="fa fa-key"></i> login with facebook </a></li>
+					<a href="/auth/login/facebook"><i class="fa fa-facebook"></i> Facebook login </a></li>
 				<li>
-					<a href="/auth/login/twitter"><i class="fa fa-key"></i> login with twitter </a></li>
+					<a href="/auth/login/twitter"><i class="fa fa-twitter"></i> Twitter login </a></li>
+			{{-- 	<li>
+					<a href="/twitter/login"><i class="fa fa-key"></i> new login twitter </a></li>
+				<li>
+					<a href="/twitter/logout"><i class="fa fa-key"></i> twitter logout</a></li> --}}
 				<li>
 				{{--{!! link_to_route('loginsocial', 'login with github;', array('github')) !!}--}}
-					<a href="/auth/login/github"><i class="fa fa-key"></i> login with github </a></li>	
+					<a href="/auth/login/github"><i class="fa fa-github"></i> Github login </a></li>	
 			</ul>
 		</div>
 

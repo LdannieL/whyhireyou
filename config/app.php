@@ -150,6 +150,7 @@ return [
 		'Laracasts\Generators\GeneratorsServiceProvider',
 		'Laralib\L5scaffold\GeneratorsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		// 'Thujohn\Twitter\TwitterServiceProvider',
 	],
 
 	/*
@@ -200,7 +201,8 @@ return [
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Image'		=> 'Intervention\Image\Facades\Image',
-		'Socialite' => 'Laravel\Socialite\Facades\Socialite'
+		'Socialite' => 'Laravel\Socialite\Facades\Socialite',
+		// 'Twitter' 	=> 'Thujohn\Twitter\Facades\Twitter'
 
 	],
 
