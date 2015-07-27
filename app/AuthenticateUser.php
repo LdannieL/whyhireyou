@@ -31,16 +31,16 @@ class AuthenticateUser{
 				return $listener->userHasLoggedIn($user); 
 			}
 
-	public function execute($hasCode, AuthenticateUserListener $listener)
-	// public function execute($hasCode, $listener)
-	{
-		if ( ! $hasCode) return $this->getAuthorizationFirst();
+								// public function execute($hasCode, AuthenticateUserListener $listener)
+								// // public function execute($hasCode, $listener)
+								// {
+								// 	if ( ! $hasCode) return $this->getAuthorizationFirst();
 
-		$user = $this->users->findByEmailOrCreate($this->getFacebookUser());
-		$this->auth->login($user, true);
+								// 	$user = $this->users->findByEmailOrCreate($this->getFacebookUser());
+								// 	$this->auth->login($user, true);
 
-		return $listener->userHasLoggedIn($user); 
-	}
+								// 	return $listener->userHasLoggedIn($user); 
+								// }
 
 			private function getAuthorizationFirstS($provider)
 			{
@@ -56,15 +56,15 @@ class AuthenticateUser{
 				return $this->socialite->driver($provider)->user();
 			}
 
-	private function getAuthorizationFirst()
-	{
-		return $this->socialite->driver('facebook')->redirect();
-	}
+								// private function getAuthorizationFirst()
+								// {
+								// 	return $this->socialite->driver('facebook')->redirect();
+								// }
 
-	private function getFacebookUser()
-	{
-		return $this->socialite->driver('facebook')->user();
-	}
+								// private function getFacebookUser()
+								// {
+								// 	return $this->socialite->driver('facebook')->user();
+								// }
 
 	// private function findByEmailorCreate()
 	// {

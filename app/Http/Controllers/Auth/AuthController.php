@@ -72,12 +72,12 @@ public function loginSocial(AuthenticateUser $authenticateUser, Request $request
 		    	return $authenticateUser->executes($hasCode, $this, $provider);
 		    }
 
-    public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
-    {
-    	$hasCode = $request->has('code');
-    	return $authenticateUser->execute($hasCode, $this);
-    	// return $authenticateUser->execute($request->has('code'), $this);
-    }
+    // public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
+    // {
+    // 	$hasCode = $request->has('code');
+    // 	return $authenticateUser->execute($hasCode, $this);
+    // 	// return $authenticateUser->execute($request->has('code'), $this);
+    // }
 
 	public function userHasLoggedIn($user)
 	{
