@@ -3,7 +3,9 @@
 namespace spec\App;
 
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\UserProvider;
+// use Illuminate\Contracts\Auth\User;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 // use App\AuthenticateUser;
 use App\AuthenticateUserListener;
 use App\Repositories\UserRepository;
@@ -34,17 +36,19 @@ class AuthenticateUserSpecSpec extends ObjectBehavior
         AuthenticateUserListener $listener
     )
     {
+        $provider = 'github';
         $providers->redirect()->shouldBeCalled();
-        $socialite->driver('github')->willReturn($providers);
+        $socialite->driver($provider)->willReturn($providers);
 
-        $this->execute(self::HAS_NO_CODE, $listener);
+        $this->execute(self::HAS_NO_CODE, $listener, $provider);
     }
 
     function it_creates_a_user_if_authorization_is_granted(
         Factory $socialite,
         UserRepository $users,
         Guard $auth,
-        UserProvider $user,
+        Authenticatable $user,
+        // User $user,
         AuthenticateUserListener $listener
     )
     {
@@ -54,14 +58,22 @@ class AuthenticateUserSpecSpec extends ObjectBehavior
         $auth->login($user, self::HAS_CODE)->shouldBeCalled();
         $listener->userHasLoggedIn($user)->shouldBeCalled();
 
-        $this->execute(self::HAS_CODE, $listener);
+        $this->execute(self::HAS_CODE, $listener, $provider);
     }
+
+    // public function loginSocial(AuthenticateUser $authenticateUser, Request $request, $provider = 'github')
+    //         // public function loginSocial(AuthenticateUser $authenticateUser, Request $request, $provider)
+    //         {
+    //             // $provider = Input::get('provider');
+    //             $hasCode = ($request->has('code') || $request->has('oauth_token'));
+    //             return $authenticateUser->executes($hasCode, $this, $provider);
+    //         }
 }
 
 class ProviderStub {
     public static $data = [
         'id' => 1,
-        'nickname' => 'foo',
+        // 'nickname' => 'foo',
         'name' => 'John Doe',
         'email' => 'john@example.com',
         'avatar' => 'foo.jpg'
