@@ -16,10 +16,10 @@ use Prophecy\Argument;
 
 class AuthenticateUserSpecSpec extends ObjectBehavior
 {
-    function it_is_initializable()
-    {
-        $this->shouldHaveType('App\AuthenticateUserSpec');
-    }
+    // function it_is_initializable()
+    // {
+    //     $this->shouldHaveType('App\AuthenticateUserSpec');
+    // }
 
     const HAS_CODE = true;
 

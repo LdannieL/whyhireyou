@@ -163,7 +163,8 @@ class StatementController extends Controller {
 
 		if($number == $total_no_statements)
 		{
-			var_dump($result);
+			// var_dump($result);
+			
 			// echo key(reset($result));
 			// echo key($result[1]);
 			// var_dump($sorted);

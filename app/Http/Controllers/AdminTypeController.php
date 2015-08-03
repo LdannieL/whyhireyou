@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Type;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class AdminTypeController extends Controller {

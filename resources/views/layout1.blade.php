@@ -43,7 +43,7 @@
 				</form>
 			</div>	
 			<div class="col_2 column right">
-				<form id="add_job_link" action="{{ route('admin.jobs.create') }}">
+				<form id="add_job_link" action="{{ route('admin.job1s.create') }}">
 				<button class="large green"><i class="fa fa-plus"></i> add job </button>
 				</form>
 			</div>
