@@ -18,10 +18,22 @@
 <body>
 	<div id="container" class="grid">
 		<header>
-			<div class="col_4 column">
+			<div class="col_4 column left">
 				<h1><a href="{{ route('home') }}"><strong>WhyHire</strong>You</a></h1>	
 			</div>
-			<div class="col_2 column right welcome">
+			<div class="col_2 column right margintop floatright" id="quiz">
+			 {{--<style type="text/css">#quiz {display:inline-block; margin-top: 20 px;}</style>--}}
+				{{-- <button class="large blue"><i class=" fa-lightbulb-o"><a href="/quiz"> start quizz </a></button> --}}
+				<form id="start_quiz" action="/statement">
+				<button class="large blue"><i class="fa fa-star-half-empty"></i> start quizz </button>
+				</form>
+			</div>	
+			<div class="col_2 column right floatright">
+				<form id="add_job_link" action="{{ route('admin.job1s.create') }}">
+				<button class="large green"><i class="fa fa-plus"></i> add job </button>
+				</form>
+			</div>
+			<div class="col_4 column right welcome floatright">
 {{-- 				@if(Auth::user()['id'])
 					<h6> welcome <strong>{{ Auth::user()['name']}}</strong></h6>
 				 link_to_route('auth/logout/{id}', 'logout', array(Auth::user()['id'])) 
@@ -36,29 +48,22 @@
 					{{-- link_to_route('auth.logout', 'logout', array(Auth::user()['id'])) !!} --}}
 				@endif
 			</div>
-			<div class="col_2 column left" id="quiz"><style type="text/css">#quiz {display:inline-block;}</style>
-				{{-- <button class="large blue"><i class=" fa-lightbulb-o"><a href="/quiz"> start quizz </a></button> --}}
-				<form id="start quiz" action="/statement">
-				<button class="large blue"><i class=" fa-lightbulb-o"></i> start quizz </button>
-				</form>
-			</div>	
-			<div class="col_2 column right">
-				<form id="add_job_link" action="{{ route('admin.job1s.create') }}">
-				<button class="large green"><i class="fa fa-plus"></i> add job </button>
-				</form>
-			</div>
-			<div class="col_1 column right">
+			
+			<div class="clearfix"></div>
+
+			<div class="col_1 column floatright">
 				<a href="/user/{id}/dashboard"><i class="fa fa-user large green"></i> User Dashboard </a>
 			</div>
-			<div class="col_1 column right">
+			<div class="col_1 column floatright">
 				<a href="/admin/job1s"><i class="large green"></i> Admin Jobs </a>
 			</div>
-			<div class="col_1 column right">
+			<div class="col_1 column floatright">
 				<a href="/admin/categories"><i class="large green"></i> Admin Categories</a>
 			</div>
-			<div class="col_1 column right">
+			<div class="col_1 column floatright">
 				<a href="/admin/types"><i class="large green"></i> Admin Types</a>
 			</div>
+
 		</header>
 
 		<div class="col_12 column">

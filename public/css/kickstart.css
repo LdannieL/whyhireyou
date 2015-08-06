@@ -517,3 +517,11 @@ clear:both;
 		text-decoration:none;
 		font-size:0.8em;
 		}
+
+.margintop{
+	margin-top: 27px;
+}
+
+.floatright{
+	float:right;
+}
