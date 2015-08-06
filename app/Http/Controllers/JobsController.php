@@ -8,7 +8,9 @@ use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
-use \Input, \Redirect, \View, \DB;
+use \Input, \Redirect, \View, \DB, \App;
+
+use App\Repositories\DbJobRepository;
 
 class JobsController extends Controller {
 
@@ -98,77 +100,117 @@ class JobsController extends Controller {
 	// 		->withCategory($category);
 	// }
 
+
 //Fully functional, WORKING AS IT SHOULD
 	public function searchResult($keyword=null, $state=null, $category=null) {	
+		$repo = App::make('App\Repositories\DbJobRepository');
+		// $query = [$keyword, $state, $category];
 // var_dump($keyword);
 // var_dump($state);
 // var_dump($category);
 // die();
+
+	// if($keyword!=='keyword' && $state=='select state' && $category=='select category') {
+ //        $jobs = Job::where('title', 'LIKE', '%'. $keyword .'%')
+	//             ->orWhere('description', 'LIKE', '%'. $keyword .'%')
+	//             ->paginate(3); 
+	// }
 	if($keyword!=='keyword' && $state=='select state' && $category=='select category') {
-        $jobs = Job::where('title', 'LIKE', '%'. $keyword .'%')
-	            ->orWhere('description', 'LIKE', '%'. $keyword .'%')
-	            ->paginate(3); 
+        $jobs = $repo->SearchKeyword($keyword, $state, $category);
 	}
+
+	// if($keyword=='keyword' && $state!=='select state' && $category=='select category') {
+ //        $jobs = Job::where('state',"=", $state)
+	//             ->paginate(3); 
+	// }
 
 	if($keyword=='keyword' && $state!=='select state' && $category=='select category') {
-        $jobs = Job::where('state',"=", $state)
-	            ->paginate(3); 
+        $jobs = $repo->SearchState($keyword, $state, $category); 
 	}
 
+	// if($keyword=='keyword' && $state=='select state' && $category!=='select category') {
+ //    	$category_id = Category::where('name',"=", $category)->first();
+	// 	$category_id = $category_id->id;
+ //        $jobs = Job::where('category_id',"=", $category_id)
+	//             ->paginate(3); 
+	// }
+
 	if($keyword=='keyword' && $state=='select state' && $category!=='select category') {
-    	$category_id = Category::where('name',"=", $category)->first();
-		$category_id = $category_id->id;
-        $jobs = Job::where('category_id',"=", $category_id)
-	            ->paginate(3); 
+        $jobs = $repo->SearchCategory($keyword, $state, $category);
 	}
+
+	// if($keyword!=='keyword' && $state!=='select state' && $category=='select category') {
+
+	// 	$jobs = DB::table('jobs')
+ //            ->where('state',"=", $state)
+ //            ->where( function($query) use ($keyword) 
+ //            {
+ //                $query->where('description', 'LIKE', '%'. $keyword .'%')
+ //                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
+ //            })
+ //            ->paginate(3);
+
+ //    }
 
 	if($keyword!=='keyword' && $state!=='select state' && $category=='select category') {
 
-		$jobs = DB::table('jobs')
-            ->where('state',"=", $state)
-            ->where( function($query) use ($keyword) 
-            {
-                $query->where('description', 'LIKE', '%'. $keyword .'%')
-                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
-            })
-            ->paginate(3);
+		$jobs = $repo->SearchKeywordState($keyword, $state, $category);
 
     }
 
-    if($keyword!=='keyword' && $state=='select state' && $category!=='select category') {
-    	$category_id = Category::where('name',"=", $category)->first();
-		$category_id = $category_id->id;
-	    $jobs = DB::table('jobs')
-            ->where('category_id',"=", $category_id)
-            ->where( function($query) use ($keyword) 
-            {
-                $query->where('description', 'LIKE', '%'. $keyword .'%')
-                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
-            })
-            ->paginate(3);
+ //    if($keyword!=='keyword' && $state=='select state' && $category!=='select category') {
+ //    	$category_id = Category::where('name',"=", $category)->first();
+	// 	$category_id = $category_id->id;
+	//     $jobs = DB::table('jobs')
+ //            ->where('category_id',"=", $category_id)
+ //            ->where( function($query) use ($keyword) 
+ //            {
+ //                $query->where('description', 'LIKE', '%'. $keyword .'%')
+ //                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
+ //            })
+ //            ->paginate(3);
+	// }
+
+	if($keyword!=='keyword' && $state=='select state' && $category!=='select category') {
+    	$jobs = $repo->SearchKeywordCategory($keyword, $state, $category);
 	}
+
+	// if($keyword=='keyword' && $state!=='select state' && $category!=='select category') {
+ //    	$category_id = Category::where('name',"=", $category)->first();
+	// 	$category_id = $category_id->id;
+ //        $jobs = Job::where('state',"=", $state)
+	//             ->where('category_id',"=", $category_id)
+	//             ->paginate(3); 
+	// }
 
 	if($keyword=='keyword' && $state!=='select state' && $category!=='select category') {
-    	$category_id = Category::where('name',"=", $category)->first();
-		$category_id = $category_id->id;
-        $jobs = Job::where('state',"=", $state)
-	            ->where('category_id',"=", $category_id)
-	            ->paginate(3); 
+        $jobs = $repo->SearchStateCategory($keyword, $state, $category);
 	}
 
-	if($keyword!=='keyword' && $state!=='select state' && $category!=='select category') {
-    	$category_id = Category::where('name',"=", $category)->first();
-		$category_id = $category_id->id;
-	    $jobs = DB::table('jobs')
-	    	->where('state',"=", $state)
-            ->where('category_id',"=", $category_id)
-            ->where( function($query) use ($keyword) 
-            {
-                $query->where('description', 'LIKE', '%'. $keyword .'%')
-                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
-            })
-            ->paginate(3);
-	}
+	// if($keyword!=='keyword' && $state!=='select state' && $category!=='select category') {
+ //    	$category_id = Category::where('name',"=", $category)->first();
+	// 	$category_id = $category_id->id;
+	//     $jobs = DB::table('jobs')
+	//     	->where('state',"=", $state)
+ //            ->where('category_id',"=", $category_id)
+ //            ->where( function($query) use ($keyword) 
+ //            {
+ //                $query->where('description', 'LIKE', '%'. $keyword .'%')
+ //                      ->orWhere('title', 'LIKE', '%' . $keyword .'%');
+ //            })
+ //            ->paginate(3);
+	// }
+
+									// if($keyword!=='keyword' && $state!=='select state' && $category!=='select category') {
+							  //   	    $category_id = Category::where('name',"=", $category)->first();
+							  //       	$category_id = $category_id->id;
+								 //    	$jobs = Job::searchKeywordStateCategory($query)->paginate(3);
+							            
+									// }
+		if($keyword!=='keyword' && $state!=='select state' && $category!=='select category') {
+	    	$jobs = $repo->SearchKeywordStateCategory($keyword, $state, $category);
+            
+		}		
 
 		return View::make('results', compact('jobs'));
 	}
