@@ -10,11 +10,15 @@
 	</div>
 	<div class="description">
 		<h5> {{ $job->title }} ({{ $job->city }}, {{ $job->state }})</h5>
+		<h5> Job category: {{ $job->category->name}} </h5>
 		<p><span id="list_date">
 			{{{ date('Y-m-d', strtotime($job->created_at))}}}
 		</span></p>
 		{!! $job->description !!} 
 		
 	</div>
-	<p>{!! link_to_route('home', '&lsaquo; Back') !!}</p>
+    <div class="description">
+        <p>{!! link_to_route('home', '&lsaquo; Back') !!}</p>
+    </div>
+	
 @stop
