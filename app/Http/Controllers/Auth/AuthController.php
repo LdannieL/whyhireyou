@@ -31,7 +31,7 @@ class AuthController extends Controller implements AuthenticateUserListener{
 	*/
 
 	use AuthenticatesAndRegistersUsers;
-
+    //no need to redirect to user dashboard
 	// protected $redirectPath = 'user/{id}/dashboard';
 	protected $redirectPath = '/';
 

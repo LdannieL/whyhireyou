@@ -5,7 +5,7 @@ use App\Models\Category;
 use \DB;
 
  class DbJobRepository {
-
+    //search functionality out of conntroller
     public function SearchKeyword($keyword, $state, $category)
     {
         return $jobs = Job::where('title', 'LIKE', '%'. $keyword .'%')
