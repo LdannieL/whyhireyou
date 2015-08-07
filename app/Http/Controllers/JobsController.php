@@ -103,6 +103,7 @@ class JobsController extends Controller {
 
 //Fully functional, WORKING AS IT SHOULD
 	public function searchResult($keyword=null, $state=null, $category=null) {	
+		//search functionality out of the conntroller; using DbJobRepository
 		$repo = App::make('App\Repositories\DbJobRepository');
 		// $query = [$keyword, $state, $category];
 // var_dump($keyword);

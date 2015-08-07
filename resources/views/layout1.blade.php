@@ -16,6 +16,7 @@
 </html>
 </head>
 <body>
+{{-- some style changes --}}
 	<div id="container" class="grid">
 		<header>
 			<div class="col_4 column left">
