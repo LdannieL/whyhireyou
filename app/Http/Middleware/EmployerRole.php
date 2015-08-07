@@ -5,7 +5,7 @@ use Illuminate\Contracts\Routing\Middleware;
 use \Auth, \Redirect;
 
 class EmployerRole {
-
+//Adding custom middleware for member roles
 	/**
 	 * Handle an incoming request.
 	 *

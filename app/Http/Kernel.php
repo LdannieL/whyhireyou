@@ -23,6 +23,7 @@ class Kernel extends HttpKernel {
 	 *
 	 * @var array
 	 */
+	//Adding custom middleware for member roles
 	protected $routeMiddleware = [
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
