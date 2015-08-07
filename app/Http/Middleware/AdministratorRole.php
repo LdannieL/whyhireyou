@@ -15,6 +15,10 @@ class AdministratorRole {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if ( ! Auth::user()) {
+	     // do something
+	    return Redirect::to('/')->withMessage('You must login to access this page.');
+   		}
 		// dd(Auth::user());
 	  	if ( Auth::user()->role !== 'Administrator') {
 	     // do something

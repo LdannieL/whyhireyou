@@ -15,6 +15,11 @@ class EmployerRole {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if ( ! Auth::user()) {
+	     // do something
+	    return Redirect::to('/')->withMessage('You must login to access this page.');
+   		}
+		
 	  	if ( Auth::user()->role !== 'Employer') {
 	     // do something
 	    return Redirect::to('/')->withMessage('You must me an employer to access this page.'); 

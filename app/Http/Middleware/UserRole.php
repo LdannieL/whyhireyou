@@ -15,6 +15,11 @@ class UserRole {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if ( ! Auth::user()) {
+	     // do something
+	    return Redirect::to('/')->withMessage('You must login to access this page.');
+   		}
+
 	  	if ( Auth::user()->role !== 'User') {
 	     // do something
 	    return Redirect::to('/')->withMessage('You must me a registrated user to access this page.');
