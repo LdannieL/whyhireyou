@@ -107,9 +107,9 @@ Route::controllers([
 
 Route::post('logout', array('as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout'));
 
-Route::get('/landing', function () {
+Route::get('/landing', ['middleware' => 'employer', function () {
     return view('landing.index');
-});
+}]);
 
 Route::get('/quiz/{id?}', array('as' => 'quiz', function () { 
     return view('quiz');
@@ -121,7 +121,7 @@ Route::get('/statement/{id}', ['as' => 'statements', 'uses' =>'StatementControll
 
 Route::post('statement/process', 'StatementController@processForm');
 
-Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
+Route::group(['prefix' => "user", 'middleware' => 'user'], function(){
 	Route::get('/{id}/dashboard', function () {
 	    return view('admin.index');
 	});
@@ -132,7 +132,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'JobsController@index']);
 
 Route::get('/{id}', ['as' => 'job', 'uses' =>'JobsController@show']);
 
-Route::group(['prefix' => "admin", 'middleware' => 'auth'], function(){
+Route::group(['prefix' => "admin", 'middleware' => 'admin'], function(){
 // Route::group(['prefix' => "admin"], function(){
 	Route::resource('jobs','AdminJobController');
 	Route::resource('categories','AdminCategoryController');
