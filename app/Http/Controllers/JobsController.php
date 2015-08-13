@@ -27,6 +27,14 @@ class JobsController extends Controller {
         return view('index', compact('jobs', 'categories', 'types'));
 	}
 
+	public function index2()
+	{
+        $jobs =  Job::with('user', 'category', 'type')->paginate(5);
+        $categories = Category::get();
+        $types = Type::get();
+        return view('jobs', compact('jobs', 'categories', 'types'));
+	}
+
 	public function show($id)
 	{
         $job = Job::with('user', 'category', 'type')->find($id);

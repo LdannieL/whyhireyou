@@ -130,6 +130,8 @@ Route::group(['prefix' => "user", 'middleware' => 'user'], function(){
 
 Route::get('/', ['as' => 'home', 'uses' => 'JobsController@index']);
 
+Route::get('/', ['as' => 'jobs', 'uses' => 'JobsController@index2']);
+
 Route::get('/{id}', ['as' => 'job', 'uses' =>'JobsController@show']);
 
 Route::group(['prefix' => "admin", 'middleware' => 'admin'], function(){
